@@ -1,0 +1,15 @@
+neo4j:
+  image: neo4j:3.0
+  ports:
+   - "7474:7474" # http
+   - "7687:7687" # bolt 
+  volumes:                  
+   - ./db/data:/data
+   - ./db/logs:/logs
+
+sinatra:
+  build: . # could use an image instead
+  ports:
+    - "4567:80"
+  links:
+    - neo4j
