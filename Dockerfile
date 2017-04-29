@@ -1,3 +1,4 @@
+# Based on http://coding.jandavid.de/2016/01/22/dockerizing-sinatra/
 FROM phusion/passenger-ruby22:0.9.20
 
 # Set correct environment variables.

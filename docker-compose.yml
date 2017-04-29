@@ -1,15 +1,37 @@
-neo4j:
-  image: neo4j:3.0
-  ports:
-   - "7474:7474" # http
-   - "7687:7687" # bolt 
-  volumes:                  
-   - ./db/data:/data
-   - ./db/logs:/logs
+# DEV + TEST setup from https://github.com/neo4j/docker-neo4j/issues/34
+version: '2'
+services:
+  neo4j-dev:
+    image: neo4j:3.0
+    ports:
+      - "7474:7474" # http
+    volumes:                  
+      - ./db-dev/data:/data
+      - ./db-dev/logs:/logs
+    networks:
+      - basic-lan
+    environment:
+      - NEO4J_AUTH=none
 
-sinatra:
-  build: . # could use an image instead
-  ports:
-    - "4567:80"
-  links:
-    - neo4j
+  neo4j-test:
+    image: neo4j:3.0
+    ports:
+      - "7475:7474"
+    networks:
+      - basic-lan
+    environment:
+      - NEO4J_AUTH=none
+
+  sinatra:
+    build: .
+    ports:
+      - "4567:80"
+    networks:
+      - basic-lan
+
+networks:
+  basic-lan:
+    ipam:
+      config:
+        - subnet: 192.168.37.0/24
+          ip-range: 192.168.37.0/24
