@@ -4,8 +4,9 @@ require_relative '../neo4j_api'
 describe "neo4j-API integration" do
 
 	before(:each) do
-		# Use the neo4j-test docker container
-		@neo = Neo4j.new({port: 7475, server: "localhost"})
+		# Use the neo4j-test docker container, run rspec from localhost
+		test_config = {"port" => 7475, "server" => "localhost"}
+		@neo = Neo4j.new(test_config)
 		@neo.clean
 	end
 

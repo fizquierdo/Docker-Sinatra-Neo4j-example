@@ -8,12 +8,12 @@ Example app to run Sinatra and Neo4j with Docker
 ### Create and start TEST and DEV neo4j db containers:
 
 	docker-compose build
-	docker-compose up
+	docker-compose --verbose up
 
-### Run tests with Rspec
+### Run tests with Rspec from the localhost
 
 	cd app && rspec spec
 
-### In production:
+### Start app in production:
 
 	docker-compose -f docker-compose-prod.yml up

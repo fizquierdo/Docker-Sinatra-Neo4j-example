@@ -1,0 +1,4 @@
+port: 7474
+server: neo4j-prod
+username: neo4j
+password: password

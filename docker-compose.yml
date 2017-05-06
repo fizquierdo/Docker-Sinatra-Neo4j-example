@@ -1,5 +1,5 @@
 # DEV + TEST setup from https://github.com/neo4j/docker-neo4j/issues/34
-version: '2'
+version: '3'
 services:
   neo4j-dev:
     image: neo4j:3.0
@@ -26,6 +26,9 @@ services:
     build: .
     ports:
       - "4567:80"
+    volumes:                  
+      - ./logs-dev/:/var/log/nginx/
+      - ./app/config/dev/config.yml:/home/app/config.yml # port: 7474, server: neo4j-dev
     networks:
       - basic-lan
 
@@ -34,4 +37,3 @@ networks:
     ipam:
       config:
         - subnet: 192.168.37.0/24
-          ip-range: 192.168.37.0/24
