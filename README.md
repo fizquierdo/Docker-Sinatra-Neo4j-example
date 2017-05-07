@@ -14,6 +14,8 @@ Example app to run Sinatra and Neo4j with Docker
 
 	cd app && rspec spec
 
-### Start app in production:
+### Start/stop app in production:
 
-	docker-compose -f docker-compose-prod.yml up
+	docker-compose -f docker-compose-prod.yml up -d 
+	docker-compose -f docker-compose-prod.yml stop
+
