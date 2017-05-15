@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/fizquierdo/Docker-Sinatra-Neo4j-example.svg?branch=master)](https://travis-ci.org/fizquierdo/Docker-Sinatra-Neo4j-example)
+
 Example app to run Sinatra and Neo4j with Docker
 
 ### Build Sinatra only
