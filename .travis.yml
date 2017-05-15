@@ -1,3 +1,4 @@
+language: ruby
 env:
  #You may want to update this to whatever the latest version is, or keep it
  # the same as your local machines. However, I have only tested it with 1.8.0+.
@@ -5,7 +6,7 @@ env:
  # explained in more detail below.
  DOCKER_COMPOSE_VERSION: 17.03.0
 
- before_install:
+before_install:
  # update is required to update the repositories to see the new packages for
  # Docker.
  - sudo apt-get update
@@ -42,3 +43,6 @@ env:
  # whatever reason it's best to report that now before your tests start
  # otherwise it can be really tricky to debug why tests are failing sometimes.
  - docker ps
+
+script:
+ - cd app && rspec spec
