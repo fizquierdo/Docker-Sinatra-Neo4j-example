@@ -7,6 +7,7 @@ before_install:
  # Setup your application stack. You may need to tweak these commands if you
  # doing out-of-the-ordinary docker-compose builds.
  #- docker-compose pull
+ - cd app && bundle install 
  - docker-compose build
  - docker-compose up -d
 
@@ -16,4 +17,4 @@ before_install:
  #- docker ps
 
 script:
- - cd app && rspec spec
+ - cd app &&  rspec spec
