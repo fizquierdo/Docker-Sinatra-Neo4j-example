@@ -4,8 +4,6 @@ services:
   - docker
 
 before_install:
- # Setup your application stack. You may need to tweak these commands if you
- # doing out-of-the-ordinary docker-compose builds.
  #- docker-compose pull
  - docker-compose build
  - docker-compose up -d
@@ -15,4 +13,11 @@ before_install:
 
 script:
  - sleep 30
- - rspec spec
+ - rspec -f d spec
+
+after_success:
+  - docker-compose stop
+
+after_failure:
+  - docker-compose stop
+  - docker-compose logs
